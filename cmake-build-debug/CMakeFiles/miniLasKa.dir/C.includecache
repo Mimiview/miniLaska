@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Alex/CLionProjects/miniLasKa/board.c
+stdio.h
+-
+stdlib.h
+-
+headers/board.h
+C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
+
+C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
+pawn.h
+C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
+
+C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
+
