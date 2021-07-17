@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/miniLasKa.dir/board.c.obj"
+  "CMakeFiles/miniLasKa.dir/graphics.c.obj"
   "CMakeFiles/miniLasKa.dir/main.c.obj"
   "CMakeFiles/miniLasKa.dir/pawn.c.obj"
   "miniLasKa.exe"

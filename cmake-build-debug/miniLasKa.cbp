@@ -87,7 +87,13 @@
 		<Unit filename="C:/Users/Alex/CLionProjects/miniLasKa/board.c">
 			<Option target="miniLasKa"/>
 		</Unit>
+		<Unit filename="C:/Users/Alex/CLionProjects/miniLasKa/graphics.c">
+			<Option target="miniLasKa"/>
+		</Unit>
 		<Unit filename="C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h">
+			<Option target="miniLasKa"/>
+		</Unit>
+		<Unit filename="C:/Users/Alex/CLionProjects/miniLasKa/headers/graphics.h">
 			<Option target="miniLasKa"/>
 		</Unit>
 		<Unit filename="C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h">

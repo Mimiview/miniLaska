@@ -5,7 +5,11 @@ CMakeFiles\miniLasKa.dir\board.c.obj: ..\board.c
 CMakeFiles\miniLasKa.dir\board.c.obj: ..\headers\board.h
 CMakeFiles\miniLasKa.dir\board.c.obj: ..\headers\pawn.h
 
+CMakeFiles\miniLasKa.dir\graphics.c.obj: ..\graphics.c
+CMakeFiles\miniLasKa.dir\graphics.c.obj: ..\headers\graphics.h
+
 CMakeFiles\miniLasKa.dir\main.c.obj: ..\headers\board.h
+CMakeFiles\miniLasKa.dir\main.c.obj: ..\headers\graphics.h
 CMakeFiles\miniLasKa.dir\main.c.obj: ..\headers\pawn.h
 CMakeFiles\miniLasKa.dir\main.c.obj: ..\main.c
 
