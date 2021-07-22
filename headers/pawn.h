@@ -25,7 +25,7 @@ void delete_pawn(pawn_t p);
 
 int count_stack(pawn_t p);
 
-int append(pawn_t *p, pawn_t r);
+int append(pawn_t p, pawn_t r);
 
 
 #endif //MINILASKA_PAWN_H

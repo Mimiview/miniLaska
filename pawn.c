@@ -34,12 +34,14 @@ void delete_pawn(pawn_t p) {
 }
 
 //inserisce il pedone food alla fine dello stack, appena messo ritorna 1;
-int append(pawn_t *p, pawn_t food) {
-    if ((*p)->next == NULL) {
-        (*p)->next = food;
+int append(pawn_t p, pawn_t food) {
+    if (p->next == NULL) {
+        p->next = food;
+        p->next->y = p->y;
+        p->next->x = p->x;
         return 1;
     } else
-        return append(&(*p)->next, food);
+        return append(p->next, food);
 }
 
 int count_stack(pawn_t p){

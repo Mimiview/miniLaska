@@ -73,14 +73,17 @@ int move_pawn(board_t board, pawn_t pawn, int x, int y) {
     return 0;
 }
 
-int move_factory(board_t b, pawn_t p, int x, int y);
+//todo bisogna implementare la funzione per far decidere la mossa al backend
+int move_factory(board_t b, pawn_t p, int x, int y){
+
+}
 
 
-//todo vedere per quale motivo viene segmentation, forse per il delete che ho appena tolto, ma poi non mangia e non appende
-int eat(board_t *board, pawn_t p, int x, int y) {
+int eat(board_t board, pawn_t p, int x, int y) {
     if (p) {
-        append(&(*board)->b[p->x][p->y], (*board)->b[x - (p->x)][y - (p->y)]);
-        (*board)->b[p->x][p->y] = NULL;
+        append(board->b[p->x][p->y], board->b[x + (p->x)][y + (p->y)]);
+        board->b[x + (p->x)][y + (p->y)] = NULL;
+        normal_move(board, board->b[p->x][p->y], x, y);
         return 1;
     }
     return 0;
@@ -89,7 +92,6 @@ int eat(board_t *board, pawn_t p, int x, int y) {
 int normal_move(board_t b, pawn_t p, int x, int y) {
     if (p) {
         b->b[x][y] = b->b[x-(x-p->x)][y-(y - p->y)];
-        //todo vedere se utilizzare o meno il delete pawn per lo spostamento.
         b->b[x-(x-p->x)][y-(y - p->y)] = NULL;
         return 1;
     }
@@ -175,8 +177,8 @@ void test_for_piggies() {
     board_t b = init_board();
     pawn_t p = init_pawn(4, 2, BLUE, SOLDIER);
     normal_move(b,b->b[4][2],3,1);
+    eat(b,b->b[2][0], 4,2);
     print_board2(&b);
-    eat(&b,b->b[2][0], 4,2);
     //printf("%d", count_stack(b->b[4][2]));
     delete_board(&b);
 }
