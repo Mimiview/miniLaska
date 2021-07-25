@@ -5,6 +5,10 @@
 #include <stdlib.h>
 #include "headers/board.h"
 
+bool is_possible_to_move(board_t pBoard, pawn_t pPawn, int x, int y);
+
+bool is_possible_to_eat(board_t pBoard, pawn_t pPawn, int x, int y);
+
 board_t init_board() {
     int i, j;
     board_t board = (board_t) malloc(sizeof(struct board));
@@ -45,40 +49,6 @@ int is_in_bounds(int x, int y) {
     return x >= 0 && x <= 6 && y >= 0 && y <= 6;
 }
 
-//TODO vedere se il giocatore può fare una mossa
-int has_legal_moves(board_t board, pawn_t pawn) {
-
-}
-
-//ritorna 1 se la mossa è andata a buon fine, e zero se non è possibile farla
-int move_pawn(board_t board, pawn_t pawn, int x, int y) {
-    if (has_legal_moves(board, pawn) && is_in_bounds(x, y)) {
-        board->b[pawn->x][pawn->y] = NULL;
-        pawn->x = x;
-        pawn->y = y;
-
-        if (pawn->next) {
-            pawn->next->x = x;
-            pawn->next->y = y;
-            if (pawn->next->next) {
-                pawn->next->next->x = x;
-                pawn->next->next->y = y;
-            }
-        }
-
-
-        board->b[x][y] = pawn;
-        return 1;
-    }
-    return 0;
-}
-
-//todo bisogna implementare la funzione per far decidere la mossa al backend
-int move_factory(board_t b, pawn_t p, int x, int y){
-
-}
-
-
 int eat(board_t board, pawn_t p, int x, int y) {
     if (p) {
         append(board->b[p->x][p->y], board->b[x + (p->x)][y + (p->y)]);
@@ -93,10 +63,40 @@ int normal_move(board_t b, pawn_t p, int x, int y) {
     if (p) {
         b->b[x][y] = b->b[x-(x-p->x)][y-(y - p->y)];
         b->b[x-(x-p->x)][y-(y - p->y)] = NULL;
+        p->x = x;
+        p->y = y;
+
+        while (p->next){
+            p->next->x = x;
+            p->next->y = y;
+        }
         return 1;
     }
     return 0;
 }
+
+//todo bisogna vedere se è possibile muoversi e implementare 1. colore 2. re o no 3. se è possibile 4.non è fuori board
+int is_possible_to_move(board_t b, pawn_t p, int x, int y) {
+    return 0;
+}
+
+
+int is_possible_to_eat(board_t b, pawn_t p, int x, int y) {
+    return 0;
+}
+
+
+//todo bisogna implementare la funzione per far decidere la mossa al backend
+int move_factory(board_t b, pawn_t p, int x, int y){
+    if(is_possible_to_move(b,p,x,y)){
+        return normal_move(b,p,x,y);
+    }else if(is_possible_to_eat(b,p,x,y))
+        return eat(b,p,x,y);
+    else
+        return 0;
+}
+
+
 
 // ******** GRAPHICS ***************
 void print_board(board_t *board) {

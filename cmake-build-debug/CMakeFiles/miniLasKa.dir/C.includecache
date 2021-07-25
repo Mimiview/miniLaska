@@ -6,15 +6,17 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
-
-C:/Users/Alex/CLionProjects/miniLasKa/pawn.c
+C:/Users/Alex/CLionProjects/miniLasKa/board.c
 stdio.h
 -
 stdlib.h
 -
-string.h
--
-headers/pawn.h
+headers/board.h
+C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
+
+C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
+pawn.h
+C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
+
 C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
 
