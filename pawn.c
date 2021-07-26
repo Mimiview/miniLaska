@@ -21,7 +21,7 @@ pawn_t init_pawn(int x, int y, enum color_pawn color, enum status status) {
     printf("malloc crushed");
     exit(1);
 }
-//todo risolvere problema delete
+
 void delete_pawn(pawn_t p) {
     if (p) {
         pawn_t aux;
