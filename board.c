@@ -46,11 +46,15 @@ int is_in_bounds(int x, int y) {
     return x >= 0 && x <= 6 && y >= 0 && y <= 6;
 }
 
-//todo studiare a fondo il funzionamento di mangiata, e sopratutto la posizione
+
 int eat(board_t board, pawn_t p, int x, int y) {
     if (p) {
-        append(board->b[p->x][p->y], board->b[x + (p->x)][y + (p->y)]);
-        board->b[x + (p->x)][y + (p->y)] = NULL;
+        int x_food,y_food;
+        x_food = (p->x + x)/2; // con questa espressione troviamo la x e la y del mangiato
+        y_food = (p->y + y)/2;
+
+        append(board->b[p->x][p->y], board->b[x_food][y_food]);
+        board->b[x_food][y_food] = NULL;
         normal_move(board, board->b[p->x][p->y], x, y);
         return 1;
     }
@@ -180,8 +184,8 @@ void print_board2(board_t *board) {
 void test_for_piggies() {
     board_t b = init_board();
     pawn_t p = init_pawn(4, 2, BLUE, SOLDIER);
-    normal_move(b, b->b[4][2], 3, 1);
-   // eat(b, b->b[2][0], 4, 2);
+    normal_move(b, b->b[2][4], 3, 3);
+    eat(b, b->b[4][2], 2, 4);
     print_board2(&b);
     //printf("%d", count_stack(b->b[4][2]));
     delete_board(&b);
