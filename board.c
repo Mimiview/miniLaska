@@ -49,9 +49,9 @@ int is_in_bounds(int x, int y) {
 
 int eat(board_t board, pawn_t p, int x, int y) {
     if (p) {
-        int x_food,y_food;
-        x_food = (p->x + x)/2; // con questa espressione troviamo la x e la y del mangiato
-        y_food = (p->y + y)/2;
+        int x_food, y_food;
+        x_food = (p->x + x) / 2; // con questa espressione troviamo la x e la y del mangiato
+        y_food = (p->y + y) / 2;
 
         append(board->b[p->x][p->y], board->b[x_food][y_food]);
         board->b[x_food][y_food] = NULL;
@@ -78,15 +78,24 @@ int normal_move(board_t b, pawn_t p, int x, int y) {
     return 0;
 }
 
-//todo bisogna vedere se è possibile muoversi e implementare 1. colore 2. re o no 3. se è possibile 4.non è fuori board
-int is_possible_to_move(board_t b, pawn_t p, int x, int y) {
-    int k,z;
+int is_legal_to_move(board_t b, pawn_t p, int x, int y) {
+    if (b && p) {
+        if(is_in_bounds(x, y) && (p->x-2))
+            return 0; //todo da fare chiccooo
+    }else
+        return 1;
+}
 
-    if (p->status == GENERAL) {
-        if (b->b[x][y] == NULL)
-            return 1;
-    } else if (p->color == BLUE){
-        return 0;
+//todo deve finire di funzionare perchè manca l'implementazione di is_legal_to_move
+int is_possible_to_move(board_t b, pawn_t p, int x, int y) {
+    if (b && p) {
+        if (b->b[x][y] == NULL) {
+            if (is_legal_to_move(b,p,x,y)&&(p->status == GENERAL || (p->color == BLUE && p->y < y) || (p->color == RED && p->y > y))) {
+                return 1;
+            } else
+                return 0;
+        } else
+            return 0;
     }
 }
 
@@ -187,6 +196,7 @@ void test_for_piggies() {
     normal_move(b, b->b[2][4], 3, 3);
     eat(b, b->b[4][2], 2, 4);
     print_board2(&b);
+    printf("%d mimmo", is_possible_to_move(b, b->b[1][3], 3, 5));
     //printf("%d", count_stack(b->b[4][2]));
     delete_board(&b);
 }
