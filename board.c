@@ -96,6 +96,13 @@ int is_possible_to_eat(board_t b, pawn_t p, int x, int y) {
     }
 }
 
+int paw_has_no_moves(board_t b, pawn_t p) {
+    return (is_possible_to_move(b, p, p->x + 1, p->y + 1) || is_possible_to_move(b, p, p->x + 1, p->y - 1) ||
+            is_possible_to_move(b, p, p->x + 2, p->y + 2) || is_possible_to_move(b, p, p->x + 2, p->y - 2) ||
+            is_possible_to_move(b, p, p->x - 1, p->y - 1) || is_possible_to_move(b, p, p->x - 2, p->y - 2) ||
+            is_possible_to_move(b, p, p->x - 1, p->y + 1) || is_possible_to_move(b, p, p->x - 2, p->y + 2));
+}
+
 int eat(board_t board, pawn_t p, int x, int y) {
     if (p) {
         int x_food, y_food;
@@ -128,7 +135,6 @@ int normal_move(board_t b, pawn_t p, int x, int y) {
 }
 
 
-
 int move_factory(board_t b, pawn_t p, int x, int y) {
 
     if (is_possible_to_eat(b, p, x, y)) {
@@ -137,6 +143,42 @@ int move_factory(board_t b, pawn_t p, int x, int y) {
         return normal_move(b, p, x, y);
     else
         return 0;
+}
+
+int no_more_moves(board_t b, enum color_pawn color) {
+    int flag;
+    flag = 0;
+    for (int i = 0; i < 6; ++i) {
+        for (int j = 0; j < 6; ++j) {
+            if (b->b[i][j]->color == color && !paw_has_no_moves(b, b->b[i][j]))
+                flag = 1;
+        }
+    }
+    return flag;
+}
+
+int no_more_paws(board_t b, enum color_pawn color) {
+
+    for (int i = 0; i < 6; ++i) {
+        for (int j = 0; j < 6; ++j) {
+            if (b->b[i][j]->color == color)
+                return 1;
+        }
+    }
+    return 0;
+}
+
+int winner(board_t b, enum color_pawn color) {
+    enum color_pawn enemy;
+    if (color != RED)
+        enemy = BLUE;
+    else
+        enemy = RED;
+
+
+    if (no_more_paws(b, enemy) && no_more_moves(b, enemy))
+        return 1;
+    return 0;
 }
 
 //todo implementare la vittoria, implementare il conta stack e l'eliminazione di esso, implementare la possibilita di diventare generale(vedi dove conviene metterlo)

@@ -29,4 +29,5 @@ int eat(board_t b, pawn_t p, int x, int y);
 
 int normal_move(board_t b, pawn_t p, int x, int y);
 
+int winner(board_t b, enum color_pawn color);
 #endif //MINILASKA_BOARD_H
