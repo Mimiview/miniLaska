@@ -3,4 +3,4 @@ project(miniLasKa C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(miniLasKa main.c headers/board.h headers/pawn.h board.c pawn.c headers/graphics.h graphics.c)
+add_executable(miniLasKa main.c headers/board.h headers/pawn.h board.c pawn.c headers/graphics.h graphics.c headers/player.h player.c)

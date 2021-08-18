@@ -99,10 +99,16 @@
 		<Unit filename="C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h">
 			<Option target="miniLasKa"/>
 		</Unit>
+		<Unit filename="C:/Users/Alex/CLionProjects/miniLasKa/headers/player.h">
+			<Option target="miniLasKa"/>
+		</Unit>
 		<Unit filename="C:/Users/Alex/CLionProjects/miniLasKa/main.c">
 			<Option target="miniLasKa"/>
 		</Unit>
 		<Unit filename="C:/Users/Alex/CLionProjects/miniLasKa/pawn.c">
+			<Option target="miniLasKa"/>
+		</Unit>
+		<Unit filename="C:/Users/Alex/CLionProjects/miniLasKa/player.c">
 			<Option target="miniLasKa"/>
 		</Unit>
 		<Unit filename="C:/Users/Alex/CLionProjects/miniLasKa/CMakeLists.txt">

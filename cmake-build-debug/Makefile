@@ -234,6 +234,33 @@ pawn.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\miniLasKa.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\miniLasKa.dir\pawn.c.s
 .PHONY : pawn.c.s
 
+player.obj: player.c.obj
+
+.PHONY : player.obj
+
+# target to build an object file
+player.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\miniLasKa.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\miniLasKa.dir\player.c.obj
+.PHONY : player.c.obj
+
+player.i: player.c.i
+
+.PHONY : player.i
+
+# target to preprocess a source file
+player.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\miniLasKa.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\miniLasKa.dir\player.c.i
+.PHONY : player.c.i
+
+player.s: player.c.s
+
+.PHONY : player.s
+
+# target to generate assembly for a file
+player.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\miniLasKa.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\miniLasKa.dir\player.c.s
+.PHONY : player.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -255,6 +282,9 @@ help:
 	@echo ... pawn.obj
 	@echo ... pawn.i
 	@echo ... pawn.s
+	@echo ... player.obj
+	@echo ... player.i
+	@echo ... player.s
 .PHONY : help
 
 

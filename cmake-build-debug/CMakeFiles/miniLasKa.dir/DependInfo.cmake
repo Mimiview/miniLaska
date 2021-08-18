@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/Alex/CLionProjects/miniLasKa/graphics.c" "C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/miniLasKa.dir/graphics.c.obj"
   "C:/Users/Alex/CLionProjects/miniLasKa/main.c" "C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/miniLasKa.dir/main.c.obj"
   "C:/Users/Alex/CLionProjects/miniLasKa/pawn.c" "C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/miniLasKa.dir/pawn.c.obj"
+  "C:/Users/Alex/CLionProjects/miniLasKa/player.c" "C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/miniLasKa.dir/player.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "MSVC")
 

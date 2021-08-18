@@ -47,6 +47,55 @@ int is_in_bounds(int x, int y) {
 }
 
 
+/* studia la legalità della mossa con salti di 1 o 2 caselle,
+ * la prima condizione serve a vedere se la mossa entra nei range di mossa,
+ * al suo interno lo statement studia la correttezza del movimento della pedina */
+int is_a_legal_move(board_t b, pawn_t p, int x, int y) {
+    if (b && p) {
+
+        if (is_in_bounds(x, y) && ((p->x == x - 1 || p->x == x + 1 || p->x == x + 2 || p->x == x - 2) &&
+                                   (p->y == y - 1 || p->y <= y + 1 || p->y == y + 2 || p->y <= y - 2))) {
+            if (p->status == GENERAL)
+                return 1;
+            if (p->color == BLUE) {
+                return (((x == p->x + 1) && (y == p->y - 1) || (x == p->x + 2) && (y == p->y - 2)) ||
+                        ((x == p->x + 1) && (y == p->y + 1) || (x == p->x + 2) && (y == p->y + 2)));
+            } else
+                return (((x == p->x - 1) && (y == p->y - 1) || (x == p->x - 2) && (y == p->y - 2)) ||
+                        ((x == p->x - 1) && (y == p->y + 1) || (x == p->x - 2) && (y == p->y + 2)));
+        }
+    } else
+        return 0;
+}
+
+int is_possible_to_move(board_t b, pawn_t p, int x, int y) {
+    if (b && p) {
+        if (b->b[x][y] == NULL) {
+            if (is_a_legal_move(b, p, x, y)) {
+                return 1;
+            } else
+                return 0;
+        } else
+            return 0;
+    }
+}
+
+
+int is_possible_to_eat(board_t b, pawn_t p, int x, int y) {
+    if (is_possible_to_move(b, p, x, y)) {
+        if (b->b[(p->x + x) / 2][(p->y + y) / 2] != NULL) {
+            if (b->b[(p->x + x) / 2][(p->y + y) / 2]->color != p->color) {
+                if (b->b[(p->x + x) / 2][(p->y + y) / 2]->status != GENERAL) {
+                    return 1;
+                } else
+                    return p->status == GENERAL;
+            }
+            return 0;
+        }
+        return 0;
+    }
+}
+
 int eat(board_t board, pawn_t p, int x, int y) {
     if (p) {
         int x_food, y_food;
@@ -78,45 +127,43 @@ int normal_move(board_t b, pawn_t p, int x, int y) {
     return 0;
 }
 
-int is_legal_to_move(board_t b, pawn_t p, int x, int y) {
-    if (b && p) {
-        if(is_in_bounds(x, y) && (p->x-2))
-            return 0; //todo da fare chiccooo
-    }else
-        return 1;
-}
-
-//todo deve finire di funzionare perchè manca l'implementazione di is_legal_to_move
-int is_possible_to_move(board_t b, pawn_t p, int x, int y) {
-    if (b && p) {
-        if (b->b[x][y] == NULL) {
-            if (is_legal_to_move(b,p,x,y)&&(p->status == GENERAL || (p->color == BLUE && p->y < y) || (p->color == RED && p->y > y))) {
-                return 1;
-            } else
-                return 0;
-        } else
-            return 0;
-    }
-}
 
 
-int is_possible_to_eat(board_t b, pawn_t p, int x, int y) {
-    return 0;
-}
-
-
-//todo bisogna implementare la funzione per far decidere la mossa al backend
 int move_factory(board_t b, pawn_t p, int x, int y) {
-    if (is_possible_to_move(b, p, x, y)) {
-        return normal_move(b, p, x, y);
-    } else if (is_possible_to_eat(b, p, x, y))
+
+    if (is_possible_to_eat(b, p, x, y)) {
         return eat(b, p, x, y);
+    } else if (is_possible_to_move(b, p, x, y))
+        return normal_move(b, p, x, y);
     else
         return 0;
 }
 
+//todo implementare la vittoria, implementare il conta stack e l'eliminazione di esso, implementare la possibilita di diventare generale(vedi dove conviene metterlo)
 
 // ******** GRAPHICS ***************
+
+void print_pedina(pawn_t p) {
+    if (p) {
+        while (p) {
+            if (p->color == BLUE) {
+                if (p->status == GENERAL)
+                    printf("B");
+                else
+                    printf("b");
+            } else {
+                if (p->status == GENERAL)
+                    printf("R");
+                else
+                    printf("r");
+            }
+            p = p->next;
+        }
+    } else printf(" ");
+
+
+}
+
 void print_board(board_t *board) {
     int i, j;
     printf("  ");
@@ -130,12 +177,7 @@ void print_board(board_t *board) {
     for (i = 0; i < DIMENSION; i++) {
         printf("%d ", i);
         for (j = 0; j < DIMENSION; j++) {
-            if ((*board)->b[i][j] == NULL)
-                printf(" ");
-            else if ((*board)->b[i][j]->color == BLUE)
-                printf("X");
-            else if ((*board)->b[i][j]->color == RED)
-                printf("O");
+            print_pedina((*board)->b[i][j]);
             printf(" | ");
         }
         printf("\n");
@@ -194,9 +236,14 @@ void test_for_piggies() {
     board_t b = init_board();
     pawn_t p = init_pawn(4, 2, BLUE, SOLDIER);
     normal_move(b, b->b[2][4], 3, 3);
-    eat(b, b->b[4][2], 2, 4);
-    print_board2(&b);
-    printf("%d mimmo", is_possible_to_move(b, b->b[1][3], 3, 5));
+    //eat(b, b->b[4][2], 2, 4);
+    //
+    if (is_possible_to_eat(b, b->b[4][2], 2, 4))
+        eat(b, b->b[4][2], 2, 4);
+    print_board(&b);
+    printf("%d ", is_possible_to_eat(b, b->b[1][5], 3, 3));
+    print_pedina(b->b[3][3]);
+    printf("%d mimmo", is_possible_to_move(b, b->b[5][1], 3, 4));
     //printf("%d", count_stack(b->b[4][2]));
     delete_board(&b);
 }

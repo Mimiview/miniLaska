@@ -11,8 +11,14 @@ CMakeFiles\miniLasKa.dir\graphics.c.obj: ..\headers\graphics.h
 CMakeFiles\miniLasKa.dir\main.c.obj: ..\headers\board.h
 CMakeFiles\miniLasKa.dir\main.c.obj: ..\headers\graphics.h
 CMakeFiles\miniLasKa.dir\main.c.obj: ..\headers\pawn.h
+CMakeFiles\miniLasKa.dir\main.c.obj: ..\headers\player.h
 CMakeFiles\miniLasKa.dir\main.c.obj: ..\main.c
 
 CMakeFiles\miniLasKa.dir\pawn.c.obj: ..\headers\pawn.h
 CMakeFiles\miniLasKa.dir\pawn.c.obj: ..\pawn.c
+
+CMakeFiles\miniLasKa.dir\player.c.obj: ..\headers\board.h
+CMakeFiles\miniLasKa.dir\player.c.obj: ..\headers\pawn.h
+CMakeFiles\miniLasKa.dir\player.c.obj: ..\headers\player.h
+CMakeFiles\miniLasKa.dir\player.c.obj: ..\player.c
 

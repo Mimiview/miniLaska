@@ -6,19 +6,21 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Alex/CLionProjects/miniLasKa/board.c
-stdio.h
--
-stdlib.h
--
-headers/board.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
-headers/pawn.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
-
 C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
 pawn.h
 C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
 
 C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
+
+C:/Users/Alex/CLionProjects/miniLasKa/headers/player.h
+board.h
+C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
+
+C:/Users/Alex/CLionProjects/miniLasKa/player.c
+stdio.h
+-
+stdlib.h
+-
+headers/player.h
+C:/Users/Alex/CLionProjects/miniLasKa/headers/player.h
 

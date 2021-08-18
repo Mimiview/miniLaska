@@ -3,12 +3,14 @@
 #include "headers/board.h"
 #include "headers/pawn.h"
 #include "headers/graphics.h"
+#include "headers/player.h"
 
 #define BOARD_SIZE 7
 
 
 int main() {
-    test_for_piggies();
+    board_t b = init_board();
+    one_vs_one(b,0);
 
 
 

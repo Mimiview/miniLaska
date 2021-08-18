@@ -12,7 +12,13 @@ CMakeFiles/miniLasKa.dir/main.c.obj
  C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
  C:/Users/Alex/CLionProjects/miniLasKa/headers/graphics.h
  C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
+ C:/Users/Alex/CLionProjects/miniLasKa/headers/player.h
  C:/Users/Alex/CLionProjects/miniLasKa/main.c
 CMakeFiles/miniLasKa.dir/pawn.c.obj
  C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
  C:/Users/Alex/CLionProjects/miniLasKa/pawn.c
+CMakeFiles/miniLasKa.dir/player.c.obj
+ C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
+ C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
+ C:/Users/Alex/CLionProjects/miniLasKa/headers/player.h
+ C:/Users/Alex/CLionProjects/miniLasKa/player.c
