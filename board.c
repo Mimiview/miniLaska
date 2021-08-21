@@ -96,12 +96,7 @@ int is_possible_to_eat(board_t b, pawn_t p, int x, int y) {
     }
 }
 
-int paw_has_no_moves(board_t b, pawn_t p) {
-    return (is_possible_to_move(b, p, p->x + 1, p->y + 1) || is_possible_to_move(b, p, p->x + 1, p->y - 1) ||
-            is_possible_to_move(b, p, p->x + 2, p->y + 2) || is_possible_to_move(b, p, p->x + 2, p->y - 2) ||
-            is_possible_to_move(b, p, p->x - 1, p->y - 1) || is_possible_to_move(b, p, p->x - 2, p->y - 2) ||
-            is_possible_to_move(b, p, p->x - 1, p->y + 1) || is_possible_to_move(b, p, p->x - 2, p->y + 2));
-}
+
 
 int eat(board_t board, pawn_t p, int x, int y) {
     if (p) {
@@ -144,14 +139,23 @@ int move_factory(board_t b, pawn_t p, int x, int y) {
     else
         return 0;
 }
+int paw_can_moves(board_t b, pawn_t p) {
+    if (b && p)
+        return (is_possible_to_move(b, p, p->x + 1, p->y + 1) || is_possible_to_move(b, p, p->x + 1, p->y - 1) ||
+                is_possible_to_move(b, p, p->x + 2, p->y + 2) || is_possible_to_move(b, p, p->x + 2, p->y - 2) ||
+                is_possible_to_move(b, p, p->x - 1, p->y - 1) || is_possible_to_move(b, p, p->x - 2, p->y - 2) ||
+                is_possible_to_move(b, p, p->x - 1, p->y + 1) || is_possible_to_move(b, p, p->x - 2, p->y + 2));
+    return 0;
+}
 
 int no_more_moves(board_t b, enum color_pawn color) {
     int flag;
-    flag = 0;
+    flag = 1;
     for (int i = 0; i < 6; ++i) {
         for (int j = 0; j < 6; ++j) {
-            if (b->b[i][j]->color == color && !paw_has_no_moves(b, b->b[i][j]))
-                flag = 1;
+            if (b->b[i][j] != NULL) // dovuto aggiungere perchè senno dava null pointer exception qunado andava
+                if (b->b[i][j]->color == color && !paw_can_moves(b, b->b[i][j]))
+                    flag = 0;
         }
     }
     return flag;
@@ -182,7 +186,9 @@ int winner(board_t b, enum color_pawn color) {
 }
 
 //todo implementare la vittoria, implementare il conta stack e l'eliminazione di esso, implementare la possibilita di diventare generale(vedi dove conviene metterlo)
+//todo vedere per quale motivo non funziona il movimento
 
+//
 // ******** GRAPHICS ***************
 
 void print_pedina(pawn_t p) {
