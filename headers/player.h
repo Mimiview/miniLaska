@@ -6,6 +6,6 @@
 #ifndef MINILASKA_PLAYER_H
 #define MINILASKA_PLAYER_H
 
-void one_vs_one(board_t board, int win);
+void one_vs_one(board_t board, int win, int player);
 
 #endif //MINILASKA_PLAYER_H

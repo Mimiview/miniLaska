@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/Alex/CLionProjects/miniLasKa/board.c" "C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/miniLasKa.dir/board.c.obj"
-  "C:/Users/Alex/CLionProjects/miniLasKa/graphics.c" "C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/miniLasKa.dir/graphics.c.obj"
-  "C:/Users/Alex/CLionProjects/miniLasKa/main.c" "C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/miniLasKa.dir/main.c.obj"
-  "C:/Users/Alex/CLionProjects/miniLasKa/pawn.c" "C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/miniLasKa.dir/pawn.c.obj"
-  "C:/Users/Alex/CLionProjects/miniLasKa/player.c" "C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/miniLasKa.dir/player.c.obj"
+  "C:/Users/axel/Desktop/miniLaska/board.c" "C:/Users/axel/Desktop/miniLaska/cmake-build-debug/CMakeFiles/miniLasKa.dir/board.c.obj"
+  "C:/Users/axel/Desktop/miniLaska/graphics.c" "C:/Users/axel/Desktop/miniLaska/cmake-build-debug/CMakeFiles/miniLasKa.dir/graphics.c.obj"
+  "C:/Users/axel/Desktop/miniLaska/main.c" "C:/Users/axel/Desktop/miniLaska/cmake-build-debug/CMakeFiles/miniLasKa.dir/main.c.obj"
+  "C:/Users/axel/Desktop/miniLaska/pawn.c" "C:/Users/axel/Desktop/miniLaska/cmake-build-debug/CMakeFiles/miniLasKa.dir/pawn.c.obj"
+  "C:/Users/axel/Desktop/miniLaska/player.c" "C:/Users/axel/Desktop/miniLaska/cmake-build-debug/CMakeFiles/miniLasKa.dir/player.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "MSVC")
 

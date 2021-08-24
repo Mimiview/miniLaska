@@ -44,6 +44,19 @@ int append(pawn_t p, pawn_t food) {
         return append(p->next, food);
 }
 
+//implementata sotto il principio quale dice che dobbiamo eliminare la coda solo se lo stack è di 3
+int delete_last_node(pawn_t p){
+    if(p){
+        if(p->next->next){
+            p->next->next = NULL;
+            return 1;
+        }
+        return 0;
+    }
+    return 0;
+}
+
+//todo vedere per quale motivo non mi riconosce gli altri p->next, studiare
 int count_stack(pawn_t p){
     if(p) {
         if (p->next == NULL) {

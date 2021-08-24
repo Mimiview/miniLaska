@@ -1,3 +1,3 @@
-C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/miniLasKa.dir
-C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Alex/CLionProjects/miniLasKa/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/axel/Desktop/miniLaska/cmake-build-debug/CMakeFiles/miniLasKa.dir
+C:/Users/axel/Desktop/miniLaska/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/axel/Desktop/miniLaska/cmake-build-debug/CMakeFiles/rebuild_cache.dir

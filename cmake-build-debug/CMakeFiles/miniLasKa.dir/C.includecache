@@ -6,53 +6,19 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Alex/CLionProjects/miniLasKa/board.c
+C:/Users/axel/Desktop/miniLaska/board.c
 stdio.h
 -
 stdlib.h
 -
 headers/board.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
+C:/Users/axel/Desktop/miniLaska/headers/board.h
 headers/pawn.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
+C:/Users/axel/Desktop/miniLaska/headers/pawn.h
 
-C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
+C:/Users/axel/Desktop/miniLaska/headers/board.h
 pawn.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
+C:/Users/axel/Desktop/miniLaska/headers/pawn.h
 
-C:/Users/Alex/CLionProjects/miniLasKa/headers/graphics.h
-stdio.h
--
-stdlib.h
--
-
-C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
-
-C:/Users/Alex/CLionProjects/miniLasKa/headers/player.h
-board.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
-
-C:/Users/Alex/CLionProjects/miniLasKa/main.c
-stdio.h
--
-stdlib.h
--
-headers/board.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
-headers/pawn.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/pawn.h
-headers/graphics.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/graphics.h
-headers/player.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/player.h
-
-C:/Users/Alex/CLionProjects/miniLasKa/player.c
-stdio.h
--
-stdlib.h
--
-headers/player.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/player.h
-headers/board.h
-C:/Users/Alex/CLionProjects/miniLasKa/headers/board.h
+C:/Users/axel/Desktop/miniLaska/headers/pawn.h
 

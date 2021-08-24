@@ -10,7 +10,8 @@
 
 int main() {
     board_t b = init_board();
-    one_vs_one(b,0);
+    test_for_piggies();
+    //one_vs_one(b,0,0);
 
 
 
