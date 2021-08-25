@@ -12,9 +12,9 @@ void one_vs_one(board_t board, int win,int player) {
         int x, y, x_moved, y_moved;
         if (!winner(board, player % 2)) {
             if (player % 2 == 0)
-                printf("------------------------PLAYER ONE TURN-------------------------\n\n");
+                printf("------------------------RED TURN-------------------------\n\n");
             else
-                printf("------------------------PLAYER TWO TURN-------------------------\n\n");
+                printf("------------------------BLUE TURN-------------------------\n\n");
 
             print_board(&board);
             printf("scegli il pedone da muovere \n");
@@ -28,7 +28,9 @@ void one_vs_one(board_t board, int win,int player) {
 
         }
         else
-            printf("HA VINTO IL GIOCATORE NUMERO  %d", player%2);
-    }
+            one_vs_one(board,1,player);
+
+    }else
+        printf("HA VINTO IL GIOCATORE NUMERO  %d", player%2);
 }
 

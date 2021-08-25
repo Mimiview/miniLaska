@@ -28,6 +28,7 @@ board_t init_board() {
 
 }
 
+
 //da vedere se distruggerla del tutto oppure se porla a NULL
 void delete_board(board_t *b) {
     int i, j;
@@ -106,7 +107,7 @@ int eat(board_t board, pawn_t p, int x, int y) {
 
 
         append(board->b[p->x][p->y], board->b[x_food][y_food]);
-        if(count_stack(p)>=3)
+        if (count_stack(p) >= 3)
             delete_last_pawn(p);
         board->b[x_food][y_food] = NULL;
         normal_move(board, board->b[p->x][p->y], x, y);
@@ -123,7 +124,7 @@ int normal_move(board_t b, pawn_t p, int x, int y) {
         b->b[x - (x - p->x)][y - (y - p->y)] = NULL;
         p->x = x;
         p->y = y;
-        if(p->color == BLUE && p->x == 6 || p->color == RED && p->x == 0)
+        if (p->color == BLUE && p->x == 6 || p->color == RED && p->x == 0)
             p->status = GENERAL;
 
 
@@ -142,11 +143,12 @@ int move_factory(board_t b, pawn_t p, int x, int y) {
 
     if (is_possible_to_eat(b, p, x, y)) {
         return eat(b, p, x, y);
-    } else if (is_possible_to_move(b, p, x, y))
+    } else if (is_possible_to_move(b, p, x, y) && !there_is_mandatory_move(b,p->color))
         return normal_move(b, p, x, y);
     else
         return 0;
 }
+
 int paw_can_moves(board_t b, pawn_t p) {
     if (b && p)
         return (is_possible_to_move(b, p, p->x + 1, p->y + 1) || is_possible_to_move(b, p, p->x + 1, p->y - 1) ||
@@ -156,13 +158,37 @@ int paw_can_moves(board_t b, pawn_t p) {
     return 0;
 }
 
+int pawn_can_eat(board_t b, pawn_t p) {
+    if (b && p)
+        return (
+                is_possible_to_eat(b, p, p->x + 2, p->y + 2) ||
+                is_possible_to_eat(b, p, p->x + 2, p->y - 2) ||
+                is_possible_to_eat(b, p, p->x - 2, p->y - 2) ||
+                is_possible_to_eat(b, p, p->x - 2, p->y + 2));
+    return 0;
+}
+
+int there_is_mandatory_move(board_t b, enum color_pawn color){
+    int flag;
+    flag = 0;
+    for (int i = 0; i < 6; ++i) {
+        for (int j = 0; j < 6; ++j) {
+            if (b->b[i][j] != NULL)
+                if (b->b[i][j]->color == color && pawn_can_eat(b, b->b[i][j]))
+                    flag = 1;
+        }
+    }
+    return flag;
+}
+
+
 int no_more_moves(board_t b, enum color_pawn color) {
     int flag;
     flag = 1;
     for (int i = 0; i < 6; ++i) {
         for (int j = 0; j < 6; ++j) {
-            if (b->b[i][j] != NULL) // dovuto aggiungere perchè senno dava null pointer exception qunado andava
-                if (b->b[i][j]->color == color && !paw_can_moves(b, b->b[i][j]))
+            if (b->b[i][j] != NULL)
+                if (b->b[i][j]->color == color && paw_can_moves(b, b->b[i][j]))
                     flag = 0;
         }
     }
@@ -170,31 +196,30 @@ int no_more_moves(board_t b, enum color_pawn color) {
 }
 
 int no_more_paws(board_t b, enum color_pawn color) {
-
+    int flag = 1;
     for (int i = 0; i < 6; ++i) {
         for (int j = 0; j < 6; ++j) {
-            if (b->b[i][j]->color == color)
-                return 1;
+            if (b->b[i][j] != NULL && b->b[i][j]->color == color)
+                flag = 0;
         }
     }
-    return 0;
+    return flag;
 }
 
 int winner(board_t b, enum color_pawn color) {
     enum color_pawn enemy;
-    if (color != RED)
+    if (color == RED)
         enemy = BLUE;
     else
         enemy = RED;
 
 
-    if (no_more_paws(b, enemy) && no_more_moves(b, enemy))
+    if (no_more_paws(b, enemy) || no_more_moves(b, enemy))
         return 1;
     return 0;
 }
 
-//todo implementare la vittoria, implementare il conta stack e l'eliminazione di esso, implementare la possibilita di diventare generale(vedi dove conviene metterlo)
-//todo vedere per quale motivo non funziona il movimento
+
 
 //
 // ******** GRAPHICS ***************
@@ -298,7 +323,7 @@ void test_for_piggies() {
     move_factory(b, b->b[1][5], 3, 3);
     delete_last_pawn(b->b[3][3]);
     delete_pawn(b->b[6][0]);
-    normal_move(b ,b->b[2][2], 6, 0);
+    normal_move(b, b->b[2][2], 6, 0);
     //eat(b, b->b[4][2], 2, 4);
     //
     print_board(&b);

@@ -23,6 +23,8 @@ int is_in_bounds(int x, int y);
 
 void test_for_piggies();
 
+int there_is_mandatory_move(board_t b, enum color_pawn color);
+
 int move_factory(board_t b,pawn_t p, int x, int y);
 
 int eat(board_t b, pawn_t p, int x, int y);
