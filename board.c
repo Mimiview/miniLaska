@@ -97,23 +97,25 @@ int is_possible_to_eat(board_t b, pawn_t p, int x, int y) {
 }
 
 
-
+// todo mangiare solo la testa della pedina, e mangiata obbligatoria
 int eat(board_t board, pawn_t p, int x, int y) {
     if (p) {
         int x_food, y_food;
         x_food = (p->x + x) / 2; // con questa espressione troviamo la x e la y del mangiato
         y_food = (p->y + y) / 2;
 
-        if(count_stack(p)>=2)
-            delete_last_node(p);
 
         append(board->b[p->x][p->y], board->b[x_food][y_food]);
+        if(count_stack(p)>=3)
+            delete_last_pawn(p);
         board->b[x_food][y_food] = NULL;
         normal_move(board, board->b[p->x][p->y], x, y);
+
         return 1;
     }
     return 0;
 }
+
 
 int normal_move(board_t b, pawn_t p, int x, int y) {
     if (p) {
@@ -121,6 +123,9 @@ int normal_move(board_t b, pawn_t p, int x, int y) {
         b->b[x - (x - p->x)][y - (y - p->y)] = NULL;
         p->x = x;
         p->y = y;
+        if(p->color == BLUE && p->x == 6 || p->color == RED && p->x == 0)
+            p->status = GENERAL;
+
 
         while (p->next) {
             p->next->x = x;
@@ -291,9 +296,13 @@ void test_for_piggies() {
     move_factory(b, b->b[5][1], 3, 3);
     move_factory(b, b->b[3][3], 2, 4);
     move_factory(b, b->b[1][5], 3, 3);
+    delete_last_pawn(b->b[3][3]);
+    delete_pawn(b->b[6][0]);
+    normal_move(b ,b->b[2][2], 6, 0);
     //eat(b, b->b[4][2], 2, 4);
     //
     print_board(&b);
+    printf("pedine %d", count_stack(b->b[3][3]));
     //printf("%d ", is_possible_to_eat(b, b->b[1][5], 3, 3));
     //print_pedina(b->b[3][3]);
     //printf("%d mimmo", is_possible_to_move(b, b->b[5][1], 3, 4));

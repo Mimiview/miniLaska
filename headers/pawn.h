@@ -23,7 +23,7 @@ pawn_t init_pawn(int x, int y, enum color_pawn color, enum status status);
 
 void delete_pawn(pawn_t p);
 
-int delete_last_node(pawn_t p);
+int delete_last_pawn(pawn_t p);
 
 int count_stack(pawn_t p);
 

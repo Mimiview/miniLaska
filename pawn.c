@@ -45,10 +45,10 @@ int append(pawn_t p, pawn_t food) {
 }
 
 //implementata sotto il principio quale dice che dobbiamo eliminare la coda solo se lo stack è di 3
-int delete_last_node(pawn_t p){
+int delete_last_pawn(pawn_t p){
     if(p){
         if(p->next->next){
-            p->next->next = NULL;
+            p->next->next->next = NULL;
             return 1;
         }
         return 0;
