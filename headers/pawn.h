@@ -25,6 +25,8 @@ void delete_pawn(pawn_t p);
 
 int delete_last_pawn(pawn_t p);
 
+pawn_t delete_head_pawn(pawn_t *p);
+
 int count_stack(pawn_t p);
 
 int append(pawn_t p, pawn_t r);

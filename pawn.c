@@ -6,7 +6,14 @@
 #include <string.h>
 #include "headers/pawn.h"
 
-
+/**
+ * Inizializza un puntatore ad una struct pawn
+ * @param x coordinata x della pedina
+ * @param y coordinata y della pedina
+ * @param color colore da dare alla pedina
+ * @param status lo stato della pedina(cosa che potevamo omettere a causa del fatto che la inizializziamo sempre a soldier)
+ * @return pawn_t inizializzata in memoria
+ */
 pawn_t init_pawn(int x, int y, enum color_pawn color, enum status status) {
     pawn_t p;
     p = (pawn_t) malloc(sizeof(struct pawn));
@@ -22,6 +29,11 @@ pawn_t init_pawn(int x, int y, enum color_pawn color, enum status status) {
     exit(1);
 }
 
+/**
+ * Elimina del tutto lo spazio in memoria di una pedina
+ * @param p pedina da eliminare
+ * @return void
+ */
 void delete_pawn(pawn_t p) {
     if (p) {
         pawn_t aux;
@@ -33,21 +45,44 @@ void delete_pawn(pawn_t p) {
     }
 }
 
-//inserisce il pedone food alla fine dello stack, appena messo ritorna 1;
+/**
+ * mette in fondo lo "stack" la pedina che passiamo come secondo parametro
+ * @param p pedina
+ * @return 1 se l'append è andato a buon fine;
+ */
 int append(pawn_t p, pawn_t food) {
     if (p->next == NULL) {
         p->next = food;
         p->next->y = p->y;
         p->next->x = p->x;
+        food->next = NULL;
         return 1;
     } else
         return append(p->next, food);
 }
 
-//implementata sotto il principio quale dice che dobbiamo eliminare la coda solo se lo stack è di 3
-int delete_last_pawn(pawn_t p){
-    if(p){
-        if(p->next->next){
+
+pawn_t delete_head_pawn(pawn_t *p) {
+    if ((*p)) {
+        pawn_t aux;
+        aux = *p;
+        if((*p)->next)
+            *p = (*p)->next;
+        return aux;
+
+    } else
+        (*p) = NULL;
+
+}
+
+/**
+ * elimina l'ultima pedina dello stack
+ * @param p pedina dalla quale eliminare l'utlimo elemento
+ * @return 1 se viene eliminata, 0 se non lo è;
+ */
+int delete_last_pawn(pawn_t p) {
+    if (p) {
+        if (p->next->next) {
             p->next->next->next = NULL;
             return 1;
         }
@@ -56,14 +91,18 @@ int delete_last_pawn(pawn_t p){
     return 0;
 }
 
-//todo vedere per quale motivo non mi riconosce gli altri p->next, studiare
-int count_stack(pawn_t p){
-    if(p) {
+/**
+ * conta quante pedine ci sono in uno stack
+ * @param p pedina da studiare
+ * @return il numero di pedine in uno stack;
+ */
+int count_stack(pawn_t p) {
+    if (p) {
         if (p->next == NULL) {
             return 1;
         }
         return 1 + count_stack(p->next);
-    }else
+    } else
         return 0;
 }
 

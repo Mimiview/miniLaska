@@ -6,7 +6,13 @@
 #include <stdlib.h>
 #include "headers/player.h"
 #include "headers/board.h"
-
+/**
+ * funzione principale per la modalità 1v1
+ * @param board pedina
+ * @param win pedina
+ * @param player pedina
+ * @return void;
+ */
 void one_vs_one(board_t board, int win,int player) {
     if(!win) {
         int x, y, x_moved, y_moved;
@@ -30,7 +36,12 @@ void one_vs_one(board_t board, int win,int player) {
         else
             one_vs_one(board,1,player);
 
-    }else
-        printf("HA VINTO IL GIOCATORE NUMERO  %d", player%2);
+    }else {
+        if(player%2 == 0){
+            printf("RED TEAM WINS");
+        } else
+            printf("BLUE TEAM WINS");
+        delete_board(&board);
+    }
 }
 

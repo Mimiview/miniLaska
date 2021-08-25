@@ -8,7 +8,9 @@
 #include "pawn.h"
 
 #define DIMENSION 7
-
+/**
+ * struttura della board composta da un array di pedine staticamente inizializzato 7x7
+ */
 typedef struct board{
     pawn_t b[DIMENSION][DIMENSION];
 }* board_t;
