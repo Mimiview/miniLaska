@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 #include "headers/player.h"
 #include "headers/board.h"
 /**
@@ -28,9 +29,9 @@ void one_vs_one(board_t board, int win,int player) {
             printf("scegli la posizione in cui muoverlo\n");
             scanf("%d%d", &x_moved, &y_moved);
 
-            if (!move_factory(board, board->b[x][y], x_moved, y_moved))
-                printf("Mossa non disponibile, rifai siooo\n\n");
-            one_vs_one(board,0, player++);
+            if (!is_in_bounds(x_moved,y_moved) || !is_in_bounds(x,y) || !move_factory(board, board->b[x][y], x_moved, y_moved) )
+                printf("\n\n\nMossa non disponibile, provane un'altra\n\n");
+            one_vs_one(board,0, player+1);
 
         }
         else

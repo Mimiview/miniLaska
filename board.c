@@ -4,7 +4,109 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "headers/board.h"
-#include "headers/pawn.h"
+
+
+/**
+ * Inizializza un puntatore ad una struct pawn
+ * @param x coordinata x della pedina
+ * @param y coordinata y della pedina
+ * @param color colore da dare alla pedina
+ * @param status lo stato della pedina(cosa che potevamo omettere a causa del fatto che la inizializziamo sempre a soldier)
+ * @return pawn_t inizializzata in memoria
+ */
+pawn_t init_pawn(int x, int y, enum color_pawn color, enum status status) {
+    pawn_t p;
+    p = (pawn_t) malloc(sizeof(struct pawn));
+    if (p) {
+        p->x = x;
+        p->y = y;
+        p->status = status;
+        p->color = color;
+        p->next = NULL;
+        return p;
+    }
+    printf("malloc crushed");
+    exit(1);
+}
+
+/**
+ * Elimina del tutto lo spazio in memoria di una pedina
+ * @param p pedina da eliminare
+ * @return void
+ */
+void delete_pawn(pawn_t p) {
+    if (p) {
+        pawn_t aux;
+        if (p->next)
+            delete_pawn(p->next);
+        aux = p;
+        free(aux);
+        p = NULL;
+    }
+}
+
+/**
+ * mette in fondo lo "stack" la pedina che passiamo come secondo parametro
+ * @param p pedina
+ * @return 1 se l'append è andato a buon fine;
+ */
+int append(pawn_t p, pawn_t food) {
+    if (p->next == NULL) {
+        p->next = food;
+        p->next->y = p->y;
+        p->next->x = p->x;
+        food->next = NULL;
+        return 1;
+    } else
+        return append(p->next, food);
+}
+
+
+pawn_t delete_head_pawn(board_t b, pawn_t *p) {
+    if ((*p)) {
+        pawn_t aux;
+        aux = *p;
+        *p = (*p)->next;
+        b->b[aux->x][aux->y] = *p;
+        return aux;
+
+    }
+    (*p) = NULL;
+    return *p;
+
+}
+
+/**
+ * elimina l'ultima pedina dello stack
+ * @param p pedina dalla quale eliminare l'utlimo elemento
+ * @return 1 se viene eliminata, 0 se non lo è;
+ */
+int delete_last_pawn(pawn_t p) {
+    if (p) {
+        if (p->next->next) {
+            p->next->next->next = NULL;
+            return 1;
+        }
+        return 0;
+    }
+    return 0;
+}
+
+/**
+ * conta quante pedine ci sono in uno stack
+ * @param p pedina da studiare
+ * @return il numero di pedine in uno stack;
+ */
+int count_stack(pawn_t p) {
+    if (p) {
+        if (p->next == NULL) {
+            return 1;
+        }
+        return 1 + count_stack(p->next);
+    } else
+        return 0;
+}
+
 
 /**
  * inizializza la board di gioco con opportune pedine messe nei loro specifici posti
@@ -86,9 +188,11 @@ int is_a_legal_move(board_t b, pawn_t p, int x, int y) {
                 return (((x == p->x - 1) && (y == p->y - 1) || (x == p->x - 2) && (y == p->y - 2)) ||
                         ((x == p->x - 1) && (y == p->y + 1) || (x == p->x - 2) && (y == p->y + 2)));
         }
+        return 0;
     } else
         return 0;
 }
+
 
 /**
  * vede se la pedina presa in questione ha la possibilità di muoversi
@@ -102,12 +206,13 @@ int is_possible_to_move(board_t b, pawn_t p, int x, int y) {
     if (b && p) {
         if (b->b[x][y] == NULL) {
             if (is_a_legal_move(b, p, x, y)) {
-                return 1;
+                    return 1;
             } else
                 return 0;
         } else
             return 0;
     }
+    return 0;
 }
 
 /**
@@ -123,16 +228,15 @@ int is_possible_to_eat(board_t b, pawn_t p, int x, int y) {
     if (is_possible_to_move(b, p, x, y)) {
         if (b->b[(p->x + x) / 2][(p->y + y) / 2] != NULL) {
             if (b->b[(p->x + x) / 2][(p->y + y) / 2]->color != p->color) {
-                if (b->b[(p->x + x) / 2][(p->y + y) / 2]->status != GENERAL) {
-                    return 1;
-                } else
-                    return p->status == GENERAL;
+
+                return 1;
             }
-            return 0;
         }
         return 0;
     }
+    return 0;
 }
+
 
 
 /**
@@ -146,15 +250,13 @@ int is_possible_to_eat(board_t b, pawn_t p, int x, int y) {
 int eat(board_t board, pawn_t p, int x, int y) {
     if (p) {
         int x_food, y_food;
-        pawn_t tmp;
         x_food = (p->x + x) / 2; // con questa espressione troviamo la x e la y del mangiato
         y_food = (p->y + y) / 2;
 
 
+        append(p, delete_head_pawn(board, &board->b[x_food][y_food]));
 
-        append(p, board->b[x_food][y_food]);
 
-        delete_head_pawn(&board->b[x_food][y_food]);
         if (count_stack(p) >= 3)
             delete_last_pawn(p);
 
@@ -204,7 +306,7 @@ int normal_move(board_t b, pawn_t p, int x, int y) {
  */
 int move_factory(board_t b, pawn_t p, int x, int y) {
     if (p) {
-        if (is_possible_to_eat(b, p, x, y)) {
+        if (is_possible_to_eat(b, p, x, y) ) {
             return eat(b, p, x, y);
         } else if (is_possible_to_move(b, p, x, y) && !there_is_mandatory_move(b, p->color))
             return normal_move(b, p, x, y);
@@ -321,7 +423,10 @@ int winner(board_t b, enum color_pawn color) {
 
 //
 // ******** GRAPHICS ***************
-
+/**
+ * printa il valore della pedina
+ * @param p pedina da stampare
+ */
 void print_pedina(pawn_t p) {
     if (p) {
         while (p) {
@@ -343,6 +448,10 @@ void print_pedina(pawn_t p) {
 
 }
 
+/**
+ * printa l'intera board
+ * @param p pedina da stampare
+ */
 void print_board(board_t *board) {
     int i, j;
     printf("  ");
@@ -363,23 +472,7 @@ void print_board(board_t *board) {
     }
 }
 
-char get_char(pawn_t pawn) {
-    if (pawn) {
-        if (pawn->color == BLUE) {
-            if (pawn->status == GENERAL) {
-                return 'B';
-            } else return 'b';
-        } else {
-            if (pawn->status == GENERAL) {
-                return 'R';
-            } else return 'r';
-        }
-    }
-    return ' ';
-}
-
-
-void test_for_piggies() {
+/*void test_for_piggies() {
     board_t b = init_board();
     pawn_t p = init_pawn(4, 2, BLUE, SOLDIER);
     move_factory(b, b->b[4][2], 3, 3);
@@ -399,4 +492,4 @@ void test_for_piggies() {
     //printf("%d mimmo", is_possible_to_move(b, b->b[5][1], 3, 4));
     //printf("%d", count_stack(b->b[4][2]));
     delete_board(&b);
-}
+}*/

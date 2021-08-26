@@ -112,28 +112,9 @@ CMakeFiles\miniLasKa.dir\pawn.c.s: cmake_force
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\miniLasKa.dir\pawn.c.s /c C:\Users\Alex\CLionProjects\miniLaska\pawn.c
 <<
 
-CMakeFiles\miniLasKa.dir\graphics.c.obj: CMakeFiles\miniLasKa.dir\flags.make
-CMakeFiles\miniLasKa.dir\graphics.c.obj: ..\graphics.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Alex\CLionProjects\miniLaska\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/miniLasKa.dir/graphics.c.obj"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1423~1.281\bin\Hostx86\x86\cl.exe @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoCMakeFiles\miniLasKa.dir\graphics.c.obj /FdCMakeFiles\miniLasKa.dir\ /FS -c C:\Users\Alex\CLionProjects\miniLaska\graphics.c
-<<
-
-CMakeFiles\miniLasKa.dir\graphics.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/miniLasKa.dir/graphics.c.i"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1423~1.281\bin\Hostx86\x86\cl.exe > CMakeFiles\miniLasKa.dir\graphics.c.i @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Alex\CLionProjects\miniLaska\graphics.c
-<<
-
-CMakeFiles\miniLasKa.dir\graphics.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/miniLasKa.dir/graphics.c.s"
-	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1423~1.281\bin\Hostx86\x86\cl.exe @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\miniLasKa.dir\graphics.c.s /c C:\Users\Alex\CLionProjects\miniLaska\graphics.c
-<<
-
 CMakeFiles\miniLasKa.dir\player.c.obj: CMakeFiles\miniLasKa.dir\flags.make
 CMakeFiles\miniLasKa.dir\player.c.obj: ..\player.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Alex\CLionProjects\miniLaska\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/miniLasKa.dir/player.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Alex\CLionProjects\miniLaska\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/miniLasKa.dir/player.c.obj"
 	C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1423~1.281\bin\Hostx86\x86\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoCMakeFiles\miniLasKa.dir\player.c.obj /FdCMakeFiles\miniLasKa.dir\ /FS -c C:\Users\Alex\CLionProjects\miniLaska\player.c
 <<
@@ -155,7 +136,6 @@ miniLasKa_OBJECTS = \
 "CMakeFiles\miniLasKa.dir\main.c.obj" \
 "CMakeFiles\miniLasKa.dir\board.c.obj" \
 "CMakeFiles\miniLasKa.dir\pawn.c.obj" \
-"CMakeFiles\miniLasKa.dir\graphics.c.obj" \
 "CMakeFiles\miniLasKa.dir\player.c.obj"
 
 # External object files for target miniLasKa
@@ -164,11 +144,10 @@ miniLasKa_EXTERNAL_OBJECTS =
 miniLasKa.exe: CMakeFiles\miniLasKa.dir\main.c.obj
 miniLasKa.exe: CMakeFiles\miniLasKa.dir\board.c.obj
 miniLasKa.exe: CMakeFiles\miniLasKa.dir\pawn.c.obj
-miniLasKa.exe: CMakeFiles\miniLasKa.dir\graphics.c.obj
 miniLasKa.exe: CMakeFiles\miniLasKa.dir\player.c.obj
 miniLasKa.exe: CMakeFiles\miniLasKa.dir\build.make
 miniLasKa.exe: CMakeFiles\miniLasKa.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Alex\CLionProjects\miniLaska\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable miniLasKa.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Alex\CLionProjects\miniLaska\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable miniLasKa.exe"
 	"C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\miniLasKa.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests -- C:\PROGRA~2\MICROS~3\2019\COMMUN~1\VC\Tools\MSVC\1423~1.281\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\miniLasKa.dir\objects1.rsp @<<
  /out:miniLasKa.exe /implib:miniLasKa.lib /pdb:C:\Users\Alex\CLionProjects\miniLaska\cmake-build-debug\miniLasKa.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<

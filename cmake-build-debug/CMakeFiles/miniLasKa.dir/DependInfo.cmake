@@ -9,7 +9,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/Alex/CLionProjects/miniLaska/board.c" "C:/Users/Alex/CLionProjects/miniLaska/cmake-build-debug/CMakeFiles/miniLasKa.dir/board.c.obj"
-  "C:/Users/Alex/CLionProjects/miniLaska/graphics.c" "C:/Users/Alex/CLionProjects/miniLaska/cmake-build-debug/CMakeFiles/miniLasKa.dir/graphics.c.obj"
   "C:/Users/Alex/CLionProjects/miniLaska/main.c" "C:/Users/Alex/CLionProjects/miniLaska/cmake-build-debug/CMakeFiles/miniLasKa.dir/main.c.obj"
   "C:/Users/Alex/CLionProjects/miniLaska/pawn.c" "C:/Users/Alex/CLionProjects/miniLaska/cmake-build-debug/CMakeFiles/miniLasKa.dir/pawn.c.obj"
   "C:/Users/Alex/CLionProjects/miniLaska/player.c" "C:/Users/Alex/CLionProjects/miniLaska/cmake-build-debug/CMakeFiles/miniLasKa.dir/player.c.obj"

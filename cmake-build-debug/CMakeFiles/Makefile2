@@ -70,12 +70,12 @@ clean: CMakeFiles\miniLasKa.dir\clean
 CMakeFiles\miniLasKa.dir\all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\miniLasKa.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\miniLasKa.dir\depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\miniLasKa.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\miniLasKa.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Alex\CLionProjects\miniLaska\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target miniLasKa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Alex\CLionProjects\miniLaska\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5 "Built target miniLasKa"
 .PHONY : CMakeFiles\miniLasKa.dir\all
 
 # Build rule for subdir invocation for target.
 CMakeFiles\miniLasKa.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Alex\CLionProjects\miniLaska\cmake-build-debug\CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Alex\CLionProjects\miniLaska\cmake-build-debug\CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\miniLasKa.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Alex\CLionProjects\miniLaska\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles\miniLasKa.dir\rule

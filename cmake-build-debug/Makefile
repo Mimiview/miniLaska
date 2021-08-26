@@ -142,30 +142,6 @@ board.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\miniLasKa.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\miniLasKa.dir\board.c.s
 .PHONY : board.c.s
 
-graphics.obj: graphics.c.obj
-.PHONY : graphics.obj
-
-# target to build an object file
-graphics.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\miniLasKa.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\miniLasKa.dir\graphics.c.obj
-.PHONY : graphics.c.obj
-
-graphics.i: graphics.c.i
-.PHONY : graphics.i
-
-# target to preprocess a source file
-graphics.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\miniLasKa.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\miniLasKa.dir\graphics.c.i
-.PHONY : graphics.c.i
-
-graphics.s: graphics.c.s
-.PHONY : graphics.s
-
-# target to generate assembly for a file
-graphics.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\miniLasKa.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\miniLasKa.dir\graphics.c.s
-.PHONY : graphics.c.s
-
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -250,9 +226,6 @@ help:
 	@echo ... board.obj
 	@echo ... board.i
 	@echo ... board.s
-	@echo ... graphics.obj
-	@echo ... graphics.i
-	@echo ... graphics.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
